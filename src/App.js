@@ -1,13 +1,15 @@
 import './App.css';
-import Header from './components/Header';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 
 const App=()=> {
   return (
+    <>
+    <NavBar/>
+    <ItemListContainer greeting={"hola, binvenidos"}/>
     
-    <Header/>
-    
-    
+    </>
   );
 }
 

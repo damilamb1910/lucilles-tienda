@@ -1,0 +1,12 @@
+.nav__items{
+    margin-top: 20px;
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    
+  }
+
+  .item__nav{
+    text-decoration: none;
+    color: white;
+  }
