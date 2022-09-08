@@ -1,0 +1,42 @@
+.contenedorItemCount{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    align-items: center;
+    background-color: rgb(228, 226, 226);
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+}
+
+.contenedorSumarRestar{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.btn{
+    border: none;
+    font-size: 20px;
+    color: #007BFF;
+    background-color: white;
+}
+
+.btnAdd{
+    margin-top: 10px;
+    color: #007BFF;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    border: solid 1px #007BFF;
+    border-radius: 5px;
+
+}
