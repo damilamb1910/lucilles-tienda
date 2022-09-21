@@ -1,4 +1,4 @@
-import ItemCount from "../ItemCount/ItemCount"
+
 import ItemList from "../ItemList/ItemList"
 import "./ItemListContainer.css"
 import "../../assets/productos"
@@ -22,15 +22,13 @@ useEffect(()=>{
 },[])
 
 
-const onAdd=(contador)=>{
-    console.log(contador)
-}
+
 
 
     return(
     <>
     <h1>{greeting}</h1>
-    <ItemCount stock={10} inicial={1} funcion={onAdd}/>
+    
     {
         loading ?
         <Spinner animation="border" variant="primary" />
