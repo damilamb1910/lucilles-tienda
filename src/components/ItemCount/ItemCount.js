@@ -40,7 +40,7 @@ const ItemCount=({stock,funcion})=>{
     return(
         <>
         <div className="contenedorItemCount">
-<p>nombre de producto</p>
+<h5>nombre de producto</h5>
 <div className="contenedorSumarRestar">
 <button className="btn" onClick={restar}>-</button>
 <h5>{contador}</h5>

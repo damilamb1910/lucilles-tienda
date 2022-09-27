@@ -5,36 +5,34 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 const ItemDetail=({producto})=>{
-    const prod=producto.find(elemento=>{
-        return elemento.id===2
-    })
+    
     return(
         
         
         <>
 <div className='itemDetail'>
    <div className='item__img__contain'>
-   <img className='img__detail' src={prod.img} alt="" />
-   <h3>{prod.subtitulo}</h3>
-   <p>{prod.descripcion}</p>
+   <img className='img__detail' src={producto.img} alt="" />
+   <h3>{producto.subtitulo}</h3>
+   <p>{producto.descripcion}</p>
    
    </div>
         
         
 
 <Card className="text-center">
-      <Card.Header>{prod.categoria}</Card.Header>
+      <Card.Header>{producto.categoria}</Card.Header>
       <Card.Body>
-        <Card.Title>{prod.nombre}</Card.Title>
+        <Card.Title>{producto.nombre}</Card.Title>
         <Card.Text>
-          ${prod.precio}
+          ${producto.precio}
         </Card.Text>
         <Button variant="primary">Comprar</Button>
         <Card.Text>
-            STOCK DISPONIBLE: {prod.stock}
-            <ItemCount></ItemCount>
+            STOCK DISPONIBLE: {producto.stock}
+            
         </Card.Text>
-        
+        <ItemCount></ItemCount>
       </Card.Body>
       
 </Card>

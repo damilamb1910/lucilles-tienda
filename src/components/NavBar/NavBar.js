@@ -4,19 +4,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import Nav from "../Nav/Nav";
+import { Link } from "react-router-dom";
 
 const NavBar=()=>{
 
-    const categorias=[
-        {id:0,nombre:'Categoria1'},
-        {id:1,nombre:'Categoria2'},
-        {id:2,nombre:'Categoria3'}
-    ]
+
+    
+    
 
         return(
             <header>
-            <a href=""><img className="logo" src={logo} alt="" /></a>
-            <Nav categorias={categorias}/>
+            <Link to="/"><img className="logo" src={logo} alt="" /></Link>
+            <Nav />
             <MenuIcon className="logo__menu" color="primary" fontSize="large" />
             <CartWidget/>
             </header>

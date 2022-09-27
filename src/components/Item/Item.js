@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Item.css'
 
 const Item=({producto})=>{
-    console.log(producto)
     return(
         <div>
             <Card style={{ width: '18rem' }}>
