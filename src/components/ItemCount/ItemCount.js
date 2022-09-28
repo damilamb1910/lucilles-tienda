@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./ItemCount.css"
 
 
-const ItemCount=({stock,funcion})=>{
+const ItemCount=({stock,onAdd})=>{
 
 
 
@@ -11,7 +11,7 @@ const ItemCount=({stock,funcion})=>{
         if(contador<=stock && contador >=1){
             
         
-            funcion(contador)
+            onAdd(contador)
             setContador(1)
         }
             
@@ -25,8 +25,9 @@ const ItemCount=({stock,funcion})=>{
     
     const[contador,setContador]=useState(1)
     const sumar=()=>{
-
+        if(stock>contador){
     setContador(contador + 1)
+        }
 }
 
 

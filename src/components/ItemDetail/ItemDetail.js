@@ -3,9 +3,17 @@ import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const ItemDetail=({producto})=>{
-    
+
+  const [irCarrito,setIrCarrito]=useState(false)
+    const onAdd=(cantidad)=>{
+      setIrCarrito(true)
+      console.log(`compraste ${cantidad} cantidad`)
+    }
     return(
         
         
@@ -32,7 +40,10 @@ const ItemDetail=({producto})=>{
             STOCK DISPONIBLE: {producto.stock}
             
         </Card.Text>
-        <ItemCount></ItemCount>
+        {
+          irCarrito ? <Link to="/cart">terminar compra</Link>  : <ItemCount stock={producto.stock} onAdd={onAdd}/> 
+        }
+        
       </Card.Body>
       
 </Card>
