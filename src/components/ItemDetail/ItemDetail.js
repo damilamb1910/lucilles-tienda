@@ -3,16 +3,20 @@ import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../../context/CartContext';
 
 
 const ItemDetail=({producto})=>{
 
+  const {añadir}=useContext(Context);
+  
+
   const [irCarrito,setIrCarrito]=useState(false)
     const onAdd=(cantidad)=>{
       setIrCarrito(true)
-      console.log(`compraste ${cantidad} cantidad`)
+      añadir(producto,cantidad)
     }
     return(
         

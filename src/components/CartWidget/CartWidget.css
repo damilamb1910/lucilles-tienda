@@ -1,5 +1,14 @@
-.logo__carrito{
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 100px;
+
+
+  .numero{
+    position: relative;
+  }
+
+  .shopIcon{
+    
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  align-items: center;
+  align-content: center;
   }
