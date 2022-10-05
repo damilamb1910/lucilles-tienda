@@ -11,3 +11,9 @@
 .item__img__contain{
     width: 50rem;
 }
+
+.centrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

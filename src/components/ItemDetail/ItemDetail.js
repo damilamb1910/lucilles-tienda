@@ -34,7 +34,7 @@ const ItemDetail=({producto})=>{
 
 <Card className="text-center">
       <Card.Header>{producto.categoria}</Card.Header>
-      <Card.Body>
+      <Card.Body className='centrar'>
         <Card.Title>{producto.nombre}</Card.Title>
         <Card.Text>
           ${producto.precio}

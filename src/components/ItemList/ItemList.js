@@ -3,13 +3,15 @@ import Item from "../Item/Item"
 import CardGroup from 'react-bootstrap/CardGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import "./ItemList.css"
 
 
 const ItemList=({listProductos})=>{
     
     return(
         <>
-      <CardGroup>
+        <div className="container">
+        <CardGroup>
 
 {listProductos.map((prod, i)=> 
 
@@ -18,6 +20,8 @@ const ItemList=({listProductos})=>{
 
       
       </CardGroup>
+        </div>
+      
         
         
         
