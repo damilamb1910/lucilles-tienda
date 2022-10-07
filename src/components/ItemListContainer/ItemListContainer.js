@@ -3,30 +3,43 @@ import ItemList from "../ItemList/ItemList"
 import "./ItemListContainer.css"
 import "../../assets/productos"
 import { useState,useEffect } from "react"
-import  customFetch  from "../../utils/customFetch"
-import  productos  from "../../assets/productos"
 import Spinner from 'react-bootstrap/Spinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from "react-router-dom"
+import { db } from "../../firebase/firebase"
+import { getDocs,collection,query,where } from "firebase/firestore"
 
 
 const ItemListContainer=({greeting})=>{
 const [listProductos,setListProductos]=useState([])
 const [loading,setLoading]=useState(true)
 const {categoriaId}=useParams()
+
+
 useEffect(()=>{
- customFetch(productos)
- .then(res=>{
-    
-    if(categoriaId){
-        setLoading(false)
-    setListProductos(res.filter(prod=>prod.categoria===categoriaId))
+
+setLoading(true)
+    const prodCollection=collection(db,'productList')
+
+     if(categoriaId){
+       
+        const q=query(prodCollection,where('categoria','==',categoriaId))
+        getDocs(q)
+    .then(data => setListProductos(data.docs.map(product=>
+         ({...product.data(),id:product.id})))).finally(()=>{setLoading(false)})
     }else{
-    setLoading(false)
-    setListProductos(res)
+    
+    getDocs(prodCollection)
+    .then(data => setListProductos(data.docs.map(product=>
+         ({...product.data(),id:product.id})))).finally(()=>{setLoading(false)})
     }
-})
-},[categoriaId])
+    },[categoriaId])
+    
+    
+        
+   
+ 
+
 
 
 

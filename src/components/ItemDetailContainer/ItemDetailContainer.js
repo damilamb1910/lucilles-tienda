@@ -1,8 +1,9 @@
-import customFetch  from "../../utils/customFetch"
+
 import { useEffect,useState } from "react"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom";
-import productos from "../../assets/productos";
+import { db } from "../../firebase/firebase"
+import { getDoc,collection,doc } from "firebase/firestore"
 
 
 
@@ -13,8 +14,16 @@ const {id}=useParams()
 
     
     useEffect(()=>{
-        customFetch(productos,100,parseInt(id)).then((res)=>setProducto(res))
-       
+        const productCollection=collection(db,'productList')
+        const refDoc = doc(productCollection,id)
+        getDoc(refDoc)
+        .then((res)=>{
+            setProducto(
+                {
+                    id:res.id, ...res.data()
+                }
+            )
+        })
        },[id])
     return(
         <>
