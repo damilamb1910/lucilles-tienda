@@ -30,7 +30,7 @@ const CartContext=({children}) => {
         
         
     }
-console.log('carrito:',cart);
+
     const removeItem =(item)=>{
         const newCart=cart.filter(itemQuitar=>itemQuitar !== item)
         setCart([...newCart])

@@ -50,8 +50,8 @@ setLoading(true)
     <h1>{greeting}</h1>
     
     {
-        loading ?
-        <Spinner animation="border" variant="primary" />
+        loading ? <div className="centrado"> <Spinner animation="border" variant="primary" /></div>
+       
     :
     <ItemList listProductos={listProductos}/>
     }

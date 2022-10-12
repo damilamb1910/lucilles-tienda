@@ -1,7 +1,7 @@
 .nav__items{
     margin-top: 20px;
     display: flex;
-    width: 300px;
+    width: 100%;
     justify-content: space-between;
     
   }
@@ -9,4 +9,6 @@
   .item__nav{
     text-decoration: none;
     color: white;
+    margin-left: 20px;
+    margin-right: 20px;
   }

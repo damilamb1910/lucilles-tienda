@@ -11,6 +11,7 @@ const Nav=()=>{
                         <li ><Link to={"/categoria/shampoo"} className="item__nav" href="">Shampoo</Link></li>
                         <li ><Link to={"/categoria/barberia"} className="item__nav" href="">Barberia</Link></li>
                         <li ><Link to={"/categoria/perfume"} className="item__nav" href="">Perfume</Link></li>
+                        <li ><Link to={"/miscompras"} className="item__nav" href="">Mis compras</Link></li>
                  
                     
                 </ul>
