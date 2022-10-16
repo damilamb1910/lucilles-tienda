@@ -39,13 +39,13 @@ const ItemDetail=({producto})=>{
         <Card.Text>
           ${producto.precio}
         </Card.Text>
-        <Button variant="primary">Comprar</Button>
+        
         <Card.Text>
             STOCK DISPONIBLE: {producto.stock}
             
         </Card.Text>
         {
-          irCarrito ? <Link to="/cart">terminar compra</Link>  : <ItemCount stock={producto.stock} onAdd={onAdd}/> 
+          irCarrito ? <Link to="/cart"><Button>Terminar compra</Button> </Link>  : <ItemCount stock={producto.stock} onAdd={onAdd}/> 
         }
         
       </Card.Body>

@@ -1,9 +1,13 @@
-const ItemCompra=({item})=>{
-    const cosa={...item}
-    const loco=cosa.item
-    console.log(...cosa)
+const ItemCompra=({prod})=>{
+    console.log(prod)
     return(
-        <h4>hola</h4>
+        <>
+        
+        <h4>Producto: {prod.item.nombre}</h4>
+        <h4>Cantidad: {prod.quantity}</h4>
+        <h3>Precio unitario: ${prod.item.precio}</h3>
+        </>
+        
     )
 }
 

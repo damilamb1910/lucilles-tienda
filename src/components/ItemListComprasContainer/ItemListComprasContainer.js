@@ -1,36 +1,53 @@
 import { useState,useEffect } from "react"
 import Spinner from 'react-bootstrap/Spinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams } from "react-router-dom"
 import { db } from "../../firebase/firebase"
-import { getDocs,collection } from "firebase/firestore"
+import { getDoc,collection,doc } from "firebase/firestore"
 import ItemListCompras from "../ItemListCompras/ItemListCompras";
+import swal from 'sweetalert'
 
-const ItemListComprasContainer=()=>{
+const ItemListComprasContainer=({idCompra})=>{
 
-    const [listCompras,setListCompras]=useState([])
+  
     const [loading,setLoading]=useState(true)
-    const [listaFiltrada,setListaFiltrada]=useState([])
+    const [venta,setVenta]=useState([null])
+    const [ventas,setVentas]=useState([null])
+
 
     useEffect(()=>{
-
+        console.log(idCompra)
         setLoading(true)
-            const prodCollection=collection(db,'ventas')
-        
-             
+            const ventasCollection=collection(db,'ventas')
+            const refDoc=doc(ventasCollection,idCompra)
             
-            getDocs(prodCollection)
-            .then(data => setListCompras(data.docs.map(product=>
-                 ({...product.data()}))))
-                 
-                 .finally(()=>{setLoading(false)})
-                 
             
-            },[])
+
+            getDoc(refDoc)
+
+            
+            .then((data)=>{setVenta((data.data()).items)
+
+            setVentas(data.data())})
+            setLoading(false)
+            .catch(function(error){
+                swal({
+                    title: "ERROR",
+                    text: "Ingrese un ID válido.",
+                    icon: "error",
+                    button: "OK",
+                    timer:3000
+                  })
+                  
+            })
+            
+            //.finally(()=>{setLoading(false)})
+                    
+                
+            },[idCompra])
             
             return(
                 <>
-                <ItemListCompras listCompras={listCompras}></ItemListCompras>
+                {loading ? <div className="centrado"><Spinner/></div> :<ItemListCompras  ventas={ventas}  venta={venta}></ItemListCompras> }
                 </>
             )         
 }

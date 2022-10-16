@@ -13,20 +13,22 @@
 .contenedorSumarRestar{
     display: flex;
     flex-direction: row;
-    height: 30px;
+    height: 40px;
     justify-content: space-between;
     align-items: center;
     width: 190px;
     background-color: white;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 .btn{
     border: none;
     font-size: 20px;
-    color: #007BFF;
-    background-color: white;
+    color: white ; 
+    background-color:#007BFF ;
 }
+
 
 .btnAdd{
     margin-top: 10px;

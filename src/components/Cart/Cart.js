@@ -11,9 +11,12 @@ import swal from 'sweetalert'
 
 
 
+
 export const Cart=()=>{
 
 const {cart,removeItem,precioTotal,clear}=useContext(Context)
+
+
 
 const finalizar= (nombre,apellido,email,numeroTarjeta,formaDePago)=>{
     const ventasCollection= collection(db,"ventas")
@@ -34,12 +37,11 @@ const finalizar= (nombre,apellido,email,numeroTarjeta,formaDePago)=>{
             actualizarStock(producto)
         })
        const idUser=result.id
-        swal({
-            title: "¡Gracias por tu compra!",
-            text: "Tu código de referencia es: "+idUser ,
-            icon: "success",
-            button: "Aceptar",
-          });
+        swal({title: "¡Gracias por su compra!",
+        text: "Su id de compra es: "+ idUser,
+        icon: "success",
+
+        });
         clear()
     })
     
