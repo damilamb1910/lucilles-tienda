@@ -1,8 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './FormCompra.css'
+import { Context } from '../../context/CartContext';
+
 
 
 
@@ -10,6 +12,15 @@ import './FormCompra.css'
 
 
 const FormCompra=({finalizar})=>{
+useEffect(()=>{
+  if(userEmail !==''){
+    setEmail(userEmail)
+  }
+},[])
+
+
+const {userEmail}=useContext(Context)
+
   const[email,setEmail]=useState('')
   const[nombre,setNombre]=useState('')
   const[apellido,setApellido]=useState('')
@@ -24,10 +35,9 @@ const FormCompra=({finalizar})=>{
         setModalShow(false)
     }
     const ahora=(e)=>{
-      
-      
-        console.log(nombre)
+     
         finalizar(nombre,apellido,email,numeroTarjeta,formaDePago)
+        
         
     }
 const[mostrarTarjeta,setMostrarTarjeta]=useState(false)
@@ -45,7 +55,10 @@ const cambiarApellido=(e)=>{
 }
 
 const cambiarEmail=(e)=>{
+  
   setEmail(e.target.value)
+
+  
 }
 
 const cambiarFormaDePago=(e)=>{
@@ -93,13 +106,22 @@ const check = (event) => {
         <Form.Label>Apellido</Form.Label>
         <Form.Control required type="text"  placeholder="Ingrese apellido" />
         </Form.Group>
-      <Form.Group onChange={cambiarEmail} className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control required type="email" placeholder="Ingrese Email" />
+      
+
+        {
+userEmail !=='' ?<Form.Group onChange={cambiarEmail} className="mb-3" controlId="formBasicEmail">
+<Form.Label>Email</Form.Label><Form.Control plaintext  readOnly required    defaultValue={userEmail}  />
+        <Form.Text className="text-muted">
+          Le enviaremos su factura.
+        </Form.Text>
+      </Form.Group> : <Form.Group onChange={cambiarEmail} className="mb-3" controlId="formBasicEmail">
+<Form.Label>Email</Form.Label><Form.Control  required type="email"  placeholder="Ingrese Email " />
         <Form.Text className="text-muted">
           Le enviaremos su factura.
         </Form.Text>
       </Form.Group>
+        }
+        
       <Form.Group onChange={cambiarFormaDePago} className="mb-3">
       <Form.Label>Seleccione forma de pago</Form.Label>
       <Form.Select onChange={activarTarjeta}  aria-label="Default select example">
@@ -120,19 +142,12 @@ const check = (event) => {
         
       
       <Button onClick={ahora}  variant="primary" type="submit">
-        Submit
+        Finalizar
       </Button>
-      <Button >ahora</Button>
+      
     </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        
       </Modal>
         </> 
     )

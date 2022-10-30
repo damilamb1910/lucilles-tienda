@@ -16,6 +16,8 @@ export const Cart=()=>{
 
 const {cart,removeItem,precioTotal,clear}=useContext(Context)
 
+    
+
 
 
 const finalizar= (nombre,apellido,email,numeroTarjeta,formaDePago)=>{
@@ -32,7 +34,7 @@ const finalizar= (nombre,apellido,email,numeroTarjeta,formaDePago)=>{
         
         })
     .then(result=>{
-        console.log(result.id)
+        
         cart.forEach(producto=>{
             actualizarStock(producto)
         })
@@ -49,8 +51,9 @@ const finalizar= (nombre,apellido,email,numeroTarjeta,formaDePago)=>{
 const actualizarStock=(producto)=>{
     
 const upStock = doc (db,"productList", producto.item.id);
-console.log(upStock)
+
  updateDoc(upStock,{stock:(producto.item.stock - producto.quantity) })
+
 }
 
     return(

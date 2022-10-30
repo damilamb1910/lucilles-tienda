@@ -1,11 +1,11 @@
 const ItemCompra=({prod})=>{
-    console.log(prod)
+    
     return(
         <>
         
-        <h4>Producto: {prod.item.nombre}</h4>
-        <h4>Cantidad: {prod.quantity}</h4>
-        <h3>Precio unitario: ${prod.item.precio}</h3>
+        <h5>Producto: {prod.item.nombre}</h5>
+        <h6>Cantidad: {prod.quantity}</h6>
+        <h6>Precio unitario: ${prod.item.precio}</h6>
         </>
         
     )

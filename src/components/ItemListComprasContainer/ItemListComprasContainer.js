@@ -12,24 +12,29 @@ const ItemListComprasContainer=({idCompra})=>{
     const [loading,setLoading]=useState(true)
     const [venta,setVenta]=useState([null])
     const [ventas,setVentas]=useState([null])
-
+const [loco,setLoco]=useState(false)
+const [loca,setLoca]=useState(false)
 
     useEffect(()=>{
-        console.log(idCompra)
+       
         setLoading(true)
+        setLoco(false)
             const ventasCollection=collection(db,'ventas')
             const refDoc=doc(ventasCollection,idCompra)
-            
-            
-
             getDoc(refDoc)
-
+            .then((data)=>{
+                if(data){
+                    
+                    setVenta((data.data()).items)
+                    setVentas(data.data())
+                }
+            })
             
-            .then((data)=>{setVenta((data.data()).items)
-
-            setVentas(data.data())})
-            setLoading(false)
             .catch(function(error){
+               const errores=error.message
+               if(errores==="Cannot read properties of undefined (reading 'items')"){
+                
+                setLoco(true)
                 swal({
                     title: "ERROR",
                     text: "Ingrese un ID válido.",
@@ -37,17 +42,23 @@ const ItemListComprasContainer=({idCompra})=>{
                     button: "OK",
                     timer:3000
                   })
-                  
+               }else{
+                setLoca(false)
+               }
+               
+               
+                
             })
             
-            //.finally(()=>{setLoading(false)})
+            .finally(()=>{setLoading(false)})
                     
                 
             },[idCompra])
             
             return(
                 <>
-                {loading ? <div className="centrado"><Spinner/></div> :<ItemListCompras  ventas={ventas}  venta={venta}></ItemListCompras> }
+                {loading && !ventas && <div className="centrado"><Spinner/></div>}
+                {ventas && !loading && <ItemListCompras loco={loco} ventas={ventas} loca={loca} venta={venta}></ItemListCompras> }
                 </>
             )         
 }

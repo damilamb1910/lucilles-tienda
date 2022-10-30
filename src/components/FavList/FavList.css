@@ -1,0 +1,10 @@
+.img__favList{
+ height: 200px;
+}
+
+.fav__container{
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-radius: 20px;
+}

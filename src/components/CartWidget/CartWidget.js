@@ -6,14 +6,14 @@ import { Context } from '../../context/CartContext';
 import { useContext } from 'react';
 
 const CartWidget= ()=>{
-    const{productosTotal}=useContext(Context)
+    const{productosTotal,cart}=useContext(Context)
     
     return(
         <Link className="shopIcon" to='/cart'>
             
             <span className="numero">{productosTotal()||''}</span>
         <ShoppingCartIcon id="menu" className="logo__carrito" color="primary" fontSize="large"/>
-            
+            {localStorage.setItem('carro',JSON.stringify(cart))}
             
         </Link>
 

@@ -1,14 +1,17 @@
 import React from "react";
 import logo from "../../assets/logo.png"
-import MenuIcon from '@mui/icons-material/Menu';
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import Nav from "../Nav/Nav";
 import { Link } from "react-router-dom";
+import UserWidget from "../UserWidget/UserWidget";
+import FavWidget from "../FavWidget/FavWidget";
+import { Context } from '../../context/CartContext';
+import { useContext } from 'react';
 
 const NavBar=()=>{
 
-
+const {logueado,imgProfile}=useContext(Context)
     
     
 
@@ -16,7 +19,9 @@ const NavBar=()=>{
             <header>
             <Link to="/"><img className="logo" src={logo} alt="" /></Link>
             <Nav />
-            <MenuIcon className="logo__menu" color="primary" fontSize="large" />
+            
+            <UserWidget img={imgProfile}/>
+            {logueado && <FavWidget/>}
             <CartWidget/>
             </header>
         

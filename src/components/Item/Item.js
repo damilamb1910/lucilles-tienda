@@ -10,7 +10,7 @@ const Item=({producto})=>{
       <Card.Img className='card__image' variant="top" src={producto.img} />
       <Card.Body>
         <Card.Title>${producto.precio}</Card.Title>
-        <Card.Text>
+        <Card.Text className='nombre'>
         {producto.nombre}
         </Card.Text>
         <Button variant="primary">Ver detalle</Button>

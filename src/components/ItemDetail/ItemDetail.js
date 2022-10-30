@@ -8,15 +8,23 @@ import { Link } from 'react-router-dom';
 import { Context } from '../../context/CartContext';
 
 
+
+
 const ItemDetail=({producto})=>{
 
-  const {añadir}=useContext(Context);
+  const {añadir,sumar}=useContext(Context);
   
 
   const [irCarrito,setIrCarrito]=useState(false)
+const add=()=>{
+  sumar(producto.id)
+}
+
     const onAdd=(cantidad)=>{
       setIrCarrito(true)
       añadir(producto,cantidad)
+      
+      
     }
     return(
         
@@ -44,8 +52,9 @@ const ItemDetail=({producto})=>{
             STOCK DISPONIBLE: {producto.stock}
             
         </Card.Text>
+       
         {
-          irCarrito ? <Link to="/cart"><Button>Terminar compra</Button> </Link>  : <ItemCount stock={producto.stock} onAdd={onAdd}/> 
+          irCarrito ? <Link to="/cart"><Button>Terminar compra</Button> </Link>  : <ItemCount stock={producto.stock} add={add} onAdd={onAdd}/> 
         }
         
       </Card.Body>

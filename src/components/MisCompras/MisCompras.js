@@ -10,26 +10,29 @@ const MisCompras=()=>{
     const [show, setShow] = useState(true)
     const [id,setId]=useState(null)
     
- 
+ const close=()=>{
+  setShow(false)
+ }
 const handleOpen=()=>{
     setShow(true)
 }
    const handleClose = () => {
-    console.log(id)
-    if(id===null){
-        swal({
-            title: "ERROR",
-            text: "Ingrese un ID válido.",
-            icon: "error",
-            button: "OK",
-            timer:3000
-          })
-          console.log('hola')
-    }
+   
 
-  setLoading(false)
-          setShow(false)
-          cambiarId()
+    if(id===null) {
+
+      swal({
+        title: "ERROR",
+        text: "Ingrese un ID válido.",
+        icon: "error",
+        button: "OK",
+        timer:3000
+      }) 
+    } else{
+      setLoading(false)
+      setShow(false)
+      cambiarId()
+    }
 };
   
 const [loading,setLoading]=useState(true)
@@ -49,7 +52,7 @@ setId(e.target.value)
 <Button onClick={handleOpen}>Ingresar ID</Button>
 <Modal
         show={show}
-        onHide={handleClose}
+        onHide={close}
         backdrop="static"
         keyboard={false}
       >
