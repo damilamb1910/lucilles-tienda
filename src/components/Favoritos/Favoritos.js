@@ -12,7 +12,7 @@ const{listFav,removeFav}=useContext(Context)
 
     return (
         <div className='centrado'>
-           { listFav.length===0 ? <h4>No tenes favoritos</h4>  :listFav.map((prod,i)=>< FavListContainer removeFav={removeFav}  key={i} id={prod.id} /> )  }  
+           { listFav.length===0 ? <h4>No tenes favoritos</h4>  : <> <h4>Favoritos</h4> {listFav.map((prod,i)=>< FavListContainer removeFav={removeFav}  key={i} id={prod.id} />)}</>  }  
                                     
         </div>
     );

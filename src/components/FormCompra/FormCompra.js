@@ -12,6 +12,8 @@ import { Context } from '../../context/CartContext';
 
 
 const FormCompra=({finalizar})=>{
+
+  
 useEffect(()=>{
   if(userEmail !==''){
     setEmail(userEmail)
