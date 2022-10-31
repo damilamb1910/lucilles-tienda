@@ -148,7 +148,7 @@ const sumar=(id)=>{
     const removeFav =(favorito)=>{
         const newListFav=listFav.filter(itemQuitar=>itemQuitar.id !== favorito.id)
         setListFav([...newListFav])
-        console.log(listFav)
+        
        }
     
     
